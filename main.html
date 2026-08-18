@@ -58,6 +58,9 @@
         .neon-shadow-cyan {
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.35), inset 0 0 15px rgba(0, 240, 255, 0.1);
         }
+        .neon-shadow-pink {
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.35), inset 0 0 15px rgba(255, 0, 127, 0.1);
+        }
         .text-glow-cyan {
             text-shadow: 0 0 12px rgba(0, 240, 255, 0.7);
         }
@@ -200,7 +203,7 @@
                 <span id="logo-text" class="text-cyber-cyan text-glow-cyan transition-colors duration-300">PORTFOLIO.</span>
             </a>
 
-            <!-- MENU NAVBAR (Đã cập nhật bỏ nút Skills) -->
+            <!-- MENU NAVBAR DESKTOP -->
             <nav class="morph-nav hidden md:flex items-center relative p-1.5 rounded-full border border-slate-800/80 bg-slate-950/60" id="nav-container">
                 <div id="nav-indicator" class="absolute top-1.5 bottom-1.5 left-0 rounded-full bg-gradient-to-r from-cyber-cyan/20 to-cyber-pink/20 border border-cyber-cyan/50 shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all duration-300 ease-out pointer-events-none opacity-0"></div>
 
@@ -210,10 +213,18 @@
                 <a href="#contact" class="nav-link relative z-10 px-5 py-1.5 text-xs font-mono tracking-widest uppercase transition-colors duration-200 text-slate-400 hover:text-slate-200" data-section="contact">Contact</a>
             </nav>
 
-            <!-- NÚT MOBILE -->
-            <button id="mobile-menu-btn" class="md:hidden text-cyber-cyan text-2xl hover:text-cyber-pink transition-colors">
+            <!-- NÚT MOBILE MENU -->
+            <button id="mobile-menu-btn" class="md:hidden text-cyber-cyan text-2xl hover:text-cyber-pink transition-colors focus:outline-none">
                 <i class="fa-solid fa-bars-staggered"></i>
             </button>
+        </div>
+
+        <!-- MENU NAVBAR MOBILE (XỔ XUỐNG) -->
+        <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto mt-4 pb-2 border-t border-slate-800/80 pt-4 flex flex-col gap-2 font-mono text-sm">
+            <a href="#home" class="mobile-nav-link text-cyber-cyan font-bold px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800" data-section="home">Home</a>
+            <a href="#about" class="mobile-nav-link text-slate-300 hover:text-cyber-cyan px-4 py-2.5 rounded-xl hover:bg-slate-900/50" data-section="about">About</a>
+            <a href="#projects" class="mobile-nav-link text-slate-300 hover:text-cyber-cyan px-4 py-2.5 rounded-xl hover:bg-slate-900/50" data-section="projects">Projects</a>
+            <a href="#contact" class="mobile-nav-link text-slate-300 hover:text-cyber-cyan px-4 py-2.5 rounded-xl hover:bg-slate-900/50" data-section="contact">Contact</a>
         </div>
     </header>
 
@@ -291,7 +302,6 @@
                 <div class="about-card p-6 sm:p-8 relative overflow-hidden group border-b lg:border-b-0 lg:border-r border-slate-800/80 hover:bg-slate-900/70 cursor-pointer flex flex-col justify-start">
                     <div class="absolute -right-10 -top-10 w-40 h-40 bg-cyber-cyan/10 rounded-full blur-2xl group-hover:bg-cyber-cyan/20 transition-all"></div>
                     
-                    <!-- HÀNG TIÊU ĐỀ: LOGO + TÊN MỤC -->
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-xl bg-slate-900 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-2xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all shrink-0">
                             <i class="fa-solid fa-code"></i>
@@ -301,13 +311,11 @@
                         </h3>
                     </div>
 
-                    <!-- NỘI DUNG ẨN: CHỈ HIỆN VÀ MỞ RỘNG KHI HOVER -->
                     <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-80 transition-all duration-500 ease-in-out overflow-hidden mt-0 group-hover:mt-6">
                         <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 italic text-slate-400">
                             "Tuy thường dùng AI để code, nhưng sau đây là những ngôn ngữ mình có thể hiểu:"
                         </p>
                         <div class="space-y-3 border-t border-slate-800/80 pt-3">
-                            <!-- Python -->
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
                                     <i class="fa-brands fa-python text-cyber-yellow text-sm"></i>
@@ -317,7 +325,6 @@
                                     <div class="progress-bar-inner h-full bg-gradient-to-r from-cyber-yellow to-amber-500 rounded-full shadow-[0_0_8px_rgba(250,204,21,0.5)]" style="--progress-width: 80%;"></div>
                                 </div>
                             </div>
-                            <!-- C# -->
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
                                     <i class="fa-solid fa-code text-purple-400 text-sm"></i>
@@ -327,7 +334,6 @@
                                     <div class="progress-bar-inner h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.5)]" style="--progress-width: 48%;"></div>
                                 </div>
                             </div>
-                            <!-- Javascript -->
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
                                     <i class="fa-brands fa-js text-yellow-400 text-sm"></i>
@@ -337,7 +343,6 @@
                                     <div class="progress-bar-inner h-full bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full shadow-[0_0_8px_rgba(250,204,21,0.5)]" style="--progress-width: 58%;"></div>
                                 </div>
                             </div>
-                            <!-- AI -->
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
                                     <i class="fa-solid fa-robot text-cyber-cyan text-sm"></i>
@@ -355,7 +360,6 @@
                 <div class="about-card p-6 sm:p-8 relative overflow-hidden group border-b lg:border-b-0 lg:border-r border-slate-800/80 hover:bg-slate-900/70 cursor-pointer flex flex-col justify-start">
                     <div class="absolute -right-10 -top-10 w-40 h-40 bg-cyber-pink/10 rounded-full blur-2xl group-hover:bg-cyber-pink/20 transition-all"></div>
                     
-                    <!-- HÀNG TIÊU ĐỀ: LOGO + TÊN MỤC -->
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-xl bg-slate-900 border border-cyber-pink/30 flex items-center justify-center text-cyber-pink text-2xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,0,127,0.4)] transition-all shrink-0">
                             <i class="fa-solid fa-icons"></i>
@@ -365,7 +369,6 @@
                         </h3>
                     </div>
 
-                    <!-- NỘI DUNG ẨN: CHỈ HIỆN VÀ MỞ RỘNG KHI HOVER -->
                     <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-80 transition-all duration-500 ease-in-out overflow-hidden mt-0 group-hover:mt-6">
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
                             Mình có hứng thú với lập trình từ bé, có tìm hiểu về code và nghịch 1 số game kéo-thả.
@@ -377,7 +380,6 @@
                 <div class="about-card p-6 sm:p-8 relative overflow-hidden group hover:bg-slate-900/70 cursor-pointer flex flex-col justify-start">
                     <div class="absolute -right-10 -top-10 w-40 h-40 bg-cyber-yellow/10 rounded-full blur-2xl group-hover:bg-cyber-yellow/20 transition-all"></div>
                     
-                    <!-- HÀNG TIÊU ĐỀ: LOGO + TÊN MỤC -->
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-xl bg-slate-900 border border-cyber-yellow/30 flex items-center justify-center text-cyber-yellow text-2xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.4)] transition-all shrink-0">
                             <i class="fa-solid fa-brain"></i>
@@ -387,7 +389,6 @@
                         </h3>
                     </div>
 
-                    <!-- NỘI DUNG ẨN: CHỈ HIỆN VÀ MỞ RỘNG KHI HOVER -->
                     <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-80 transition-all duration-500 ease-in-out overflow-hidden mt-0 group-hover:mt-6">
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
                             Mình nghĩ mình có khả năng tư duy ở mức khá tốt :)) nhưng khả năng tận dụng vẫn chưa tốt lắm. Mình sẽ cố phát triển kĩ năng này hơn^^
@@ -492,7 +493,7 @@
                     <div class="space-y-2 text-xs font-mono">
                         <div class="flex items-center justify-center sm:justify-start gap-2 text-slate-300">
                             <i class="fa-regular fa-envelope text-cyber-cyan w-5 text-center"></i>
-                            <span class="text-slate-500">Meomeo:</span>
+                            <span class="text-slate-500">Meo meo:</span>
                             <a href="mailto:duyphungo1080@gmail.com" class="text-cyber-cyan hover:underline">duyphungo1080@gmail.com</a>
                         </div>
                         <div class="flex items-center justify-center sm:justify-start gap-2 text-slate-300">
@@ -648,13 +649,30 @@
         });
     </script>
 
-    <!-- SCRIPT MENU NAVBAR & ULTRA SMOOTH SCROLL -->
+    <!-- SCRIPT MENU NAVBAR, MOBILE TOGGLE & ULTRA SMOOTH SCROLL -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navContainer = document.getElementById('nav-container');
-            const navLinks = document.querySelectorAll('.nav-link, .btn-scroll, #brand-logo');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .btn-scroll, #brand-logo');
             const indicator = document.getElementById('nav-indicator');
             const sections = document.querySelectorAll('section, footer');
+
+            // Xử lý Toggle Menu Mobile
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
 
             let activeLink = document.querySelector('.nav-link[data-section="home"]');
             let isManualScrolling = false;
@@ -672,18 +690,31 @@
             }
 
             function setActive(link) {
-                const navItem = document.querySelector(`.nav-link[data-section="${link.getAttribute('data-section')}"]`);
-                if (!navItem) return;
-
-                document.querySelectorAll('.nav-link').forEach(l => {
-                    l.classList.remove('text-cyber-cyan', 'font-bold');
-                    l.classList.add('text-slate-400');
-                });
-                navItem.classList.remove('text-slate-400');
-                navItem.classList.add('text-cyber-cyan', 'font-bold');
+                const sectionId = link.getAttribute('data-section');
                 
-                activeLink = navItem;
-                updateIndicator(navItem);
+                // Highlight cho Desktop Nav
+                const navItem = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+                if (navItem) {
+                    document.querySelectorAll('.nav-link').forEach(l => {
+                        l.classList.remove('text-cyber-cyan', 'font-bold');
+                        l.classList.add('text-slate-400');
+                    });
+                    navItem.classList.remove('text-slate-400');
+                    navItem.classList.add('text-cyber-cyan', 'font-bold');
+                    activeLink = navItem;
+                    updateIndicator(navItem);
+                }
+
+                // Highlight cho Mobile Nav
+                document.querySelectorAll('.mobile-nav-link').forEach(ml => {
+                    if (ml.getAttribute('data-section') === sectionId) {
+                        ml.classList.add('text-cyber-cyan', 'font-bold', 'bg-slate-900/80', 'border', 'border-slate-800');
+                        ml.classList.remove('text-slate-300');
+                    } else {
+                        ml.classList.remove('text-cyber-cyan', 'font-bold', 'bg-slate-900/80', 'border', 'border-slate-800');
+                        ml.classList.add('text-slate-300');
+                    }
+                });
             }
 
             function smoothScrollTo(targetPosition, duration = 700) {
@@ -715,14 +746,16 @@
 
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
-                    e.preventDefault();
                     const targetId = link.getAttribute('href');
+                    if (!targetId || !targetId.startsWith('#')) return;
+
+                    e.preventDefault();
                     const targetSection = document.querySelector(targetId);
 
                     if (targetSection) {
                         isManualScrolling = true;
                         
-                        if (link.classList.contains('nav-link')) {
+                        if (link.hasAttribute('data-section')) {
                             setActive(link);
                         }
 
