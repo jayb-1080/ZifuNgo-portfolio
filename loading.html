@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZifuNgoo-Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #0b0f19;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container trượt toàn màn hình */
+        #intro-wrapper {
+            transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        /* Lớp trượt trang lên */
+        .slide-up-exit {
+            transform: translateY(-100vh) !important;
+        }
+
+        /* Shadow dưới chân mắt */
+        .eye-shadow {
+            transform: scaleX(0);
+            opacity: 0;
+            animation: shadowSmoothAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes shadowSmoothAppear {
+            0% { transform: scaleX(0); opacity: 0; }
+            100% { transform: scaleX(1); opacity: 0.35; }
+        }
+
+        /* Hiệu ứng mắt rơi mượt */
+        .falling-eye-left {
+            animation: dropSmoothLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+
+        .falling-eye-right {
+            animation: dropSmoothRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.25s;
+            opacity: 0;
+        }
+
+        @keyframes dropSmoothLeft {
+            0% { transform: translateY(-110vh); opacity: 0; }
+            30% { opacity: 1; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes dropSmoothRight {
+            0% { transform: translateY(-110vh); opacity: 0; }
+            30% { opacity: 1; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Chân mày xuất hiện */
+        .eyebrow-container {
+            opacity: 0;
+            animation: eyebrowFadeIn 0.5s ease-out forwards;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes eyebrowFadeIn {
+            0% { opacity: 0; transform: translateY(6px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Nhướng chân mày */
+        .eyebrow-left-action {
+            animation: eyebrowLeftSeq 4.5s ease-in-out forwards;
+            animation-delay: 0.8s;
+            transform-origin: bottom right;
+        }
+
+        .eyebrow-right-action {
+            animation: eyebrowRightSeq 4.5s ease-in-out forwards;
+            animation-delay: 0.8s;
+            transform-origin: bottom left;
+        }
+
+        @keyframes eyebrowLeftSeq {
+            0%, 70% { transform: translateY(0) rotate(0deg); }
+            75%, 82% { transform: translateY(-10px) rotate(-6deg); }
+            86%, 88% { transform: translateY(3px) rotate(4deg); }
+            92%, 100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        @keyframes eyebrowRightSeq {
+            0%, 70% { transform: translateY(0) rotate(0deg); }
+            75%, 82% { transform: translateY(-10px) rotate(6deg); }
+            86%, 100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Chuỗi di chuyển đồng tử */
+        .pupil-sequence {
+            animation: lookAroundSmooth 4.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes lookAroundSmooth {
+            0%, 10% { transform: translate(0, 0); }
+            18%, 35% { transform: translate(-22px, 0); }
+            43%, 60% { transform: translate(22px, 0); }
+            68%, 100% { transform: translate(0, 0); }
+        }
+
+        /* Chớp mắt kép cho mắt phải */
+        .eye-right-blink {
+            animation: rightEyeBlink 4.5s ease-in-out forwards;
+            animation-delay: 0.8s;
+            transform-origin: center center;
+        }
+
+        @keyframes rightEyeBlink {
+            0%, 65% { transform: scaleY(1); }
+            68% { transform: scaleY(0.08); }
+            70% { transform: scaleY(1); }
+            72% { transform: scaleY(0.08); }
+            74%, 100% { transform: scaleY(1); }
+        }
+
+        /* Chớp mắt kép + Nháy 1 mắt (Wink) cho mắt trái */
+        .eye-left-blink {
+            animation: leftEyeWink 4.5s ease-in-out forwards;
+            animation-delay: 0.8s;
+            transform-origin: center center;
+        }
+
+        @keyframes leftEyeWink {
+            0%, 65% { transform: scaleY(1); }
+            68% { transform: scaleY(0.08); }
+            70% { transform: scaleY(1); }
+            72% { transform: scaleY(0.08); }
+            74%, 82% { transform: scaleY(1); }
+            85%, 90% { transform: scaleY(0.05); }
+            95%, 100% { transform: scaleY(1); }
+        }
+
+        /* Đồng tử giãn to khi nhướng mày */
+        .pupil-core {
+            animation: pupilDilate 4.5s ease-in-out forwards;
+            animation-delay: 0.8s;
+            transform-origin: center center;
+        }
+
+        @keyframes pupilDilate {
+            0%, 70% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.6)); }
+            75%, 82% { transform: scale(1.35); filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.95)); }
+            85%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.6)); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 select-none overflow-hidden relative">
+
+    <!-- INTRO LOADING SECTION -->
+    <div id="intro-wrapper" class="fixed inset-0 z-50 bg-[#0b0f19] flex items-center justify-center">
+        
+        <!-- CENTER ANIMATION CONTAINER -->
+        <main class="relative flex flex-col items-center justify-center">
+            <!-- Floor Shadows -->
+            <div class="absolute bottom-[-15px] flex items-center gap-8 sm:gap-12 pointer-events-none z-0">
+                <div id="shadow-1" class="w-24 h-4 bg-cyan-500/20 rounded-full blur-md eye-shadow" style="animation-delay: 0.1s;"></div>
+                <div id="shadow-2" class="w-24 h-4 bg-cyan-500/20 rounded-full blur-md eye-shadow" style="animation-delay: 0.25s;"></div>
+            </div>
+
+            <!-- Eyes & Eyebrows Group -->
+            <div id="eyes-container" class="relative z-10 flex items-center gap-6 sm:gap-10">
+                
+                <!-- LEFT EYE UNIT -->
+                <div class="flex flex-col items-center">
+                    <!-- Eyebrow Left -->
+                    <div class="eyebrow-container mb-3 sm:mb-4">
+                        <div class="eyebrow-left-action">
+                            <svg class="w-20 h-6 sm:w-24 sm:h-7 text-cyan-300 drop-shadow-[0_0_8px_rgba(0,240,255,0.4)]" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 8 18 C 25 6, 55 6, 72 15" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Left Eye (Blinks + Winks) -->
+                    <div id="eye-left" class="falling-eye-left">
+                        <div class="eye-left-blink relative w-28 h-18 sm:w-36 sm:h-22 rounded-[50%] bg-slate-100 shadow-[0_0_40px_rgba(255,255,255,0.25)] flex items-center justify-center overflow-hidden border-2 border-cyan-300/40">
+                            <!-- Pupil -->
+                            <div class="pupil pupil-sequence relative w-10 h-10 sm:w-13 sm:h-13 rounded-full bg-slate-950 flex items-center justify-center">
+                                <div class="pupil-core w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-cyan-400 shadow-[0_0_12px_#00f0ff] relative">
+                                    <div class="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-white rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT EYE UNIT -->
+                <div class="flex flex-col items-center">
+                    <!-- Eyebrow Right -->
+                    <div class="eyebrow-container mb-3 sm:mb-4">
+                        <div class="eyebrow-right-action">
+                            <svg class="w-20 h-6 sm:w-24 sm:h-7 text-cyan-300 drop-shadow-[0_0_8px_rgba(0,240,255,0.4)]" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 8 15 C 25 6, 55 6, 72 18" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Right Eye -->
+                    <div id="eye-right" class="falling-eye-right">
+                        <div class="eye-right-blink relative w-28 h-18 sm:w-36 sm:h-22 rounded-[50%] bg-slate-100 shadow-[0_0_40px_rgba(255,255,255,0.25)] flex items-center justify-center overflow-hidden border-2 border-cyan-300/40">
+                            <!-- Pupil -->
+                            <div class="pupil pupil-sequence relative w-10 h-10 sm:w-13 sm:h-13 rounded-full bg-slate-950 flex items-center justify-center">
+                                <div class="pupil-core w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-cyan-400 shadow-[0_0_12px_#00f0ff] relative">
+                                    <div class="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-white rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT CHUYỂN HƯỚNG TỰ ĐỘNG -->
+    <script>
+        window.onload = function() {
+            const introWrapper = document.getElementById('intro-wrapper');
+
+            // Tổng thời gian animation chạy xong là ~5.3s
+            setTimeout(() => {
+                introWrapper.classList.add('slide-up-exit');
+                
+                // Đợi hiệu ứng trượt lên (0.8s) -> Chuyển sang main.html
+                setTimeout(() => {
+                    window.location.href = 'main.html';
+                }, 800);
+
+            }, 5300);
+        };
+    </script>
+</body>
+</html>
