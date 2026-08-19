@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZifuNgoo-Portfolio</title>
+    <title>Ngô Duy Phú | Personal Portfolio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -30,6 +30,7 @@
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
                         display: ['Space Grotesk', 'sans-serif'],
                         bebas: ['Bebas Neue', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
                     }
                 }
             }
@@ -50,31 +51,17 @@
             100% { opacity: 1; }
         }
 
-        .font-bebas {
-            font-family: 'Bebas Neue', sans-serif;
-        }
+        .font-bebas { font-family: 'Bebas Neue', sans-serif; }
+        .font-code { font-family: 'Fira Code', monospace; }
 
         /* Neon Glow Utility */
-        .neon-shadow-cyan {
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
-        }
-        .neon-shadow-pink {
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
-        }
-        .text-glow-cyan {
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
-        }
-        .text-glow-pink {
-            text-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
-        }
+        .neon-shadow-cyan { box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); }
+        .neon-shadow-pink { box-shadow: 0 0 15px rgba(255, 0, 127, 0.3); }
+        .text-glow-cyan { text-shadow: 0 0 10px rgba(0, 240, 255, 0.6); }
+        .text-glow-pink { text-shadow: 0 0 10px rgba(255, 0, 127, 0.6); }
         
-        /* Màu chữ custom #D1016C */
-        .text-custom-pink {
-            color: #D1016C;
-        }
-        .text-glow-subtle {
-            text-shadow: 0 0 10px rgba(209, 1, 108, 0.4);
-        }
+        .text-custom-pink { color: #D1016C; }
+        .text-glow-subtle { text-shadow: 0 0 12px rgba(209, 1, 108, 0.5); }
 
         /* Glassmorphism Card (Dùng GPU acceleration) */
         .cyber-card {
@@ -84,30 +71,6 @@
             border: 1px solid rgba(0, 240, 255, 0.18);
             transition: transform 0.3s ease, border-color 0.3s ease;
             will-change: transform;
-        }
-
-        /* ACCORDION SÁT NHAU - MỞ RỘNG KHI HOVER */
-        @media (min-width: 1024px) {
-            .about-container {
-                display: flex;
-                gap: 0;
-            }
-            .about-card {
-                flex: 1;
-                transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
-            }
-            .about-card:hover {
-                flex: 3.5;
-            }
-        }
-
-        /* ANIMATION THANH TIẾN TRÌNH */
-        .progress-bar-inner {
-            width: 0%;
-            transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .about-card:hover .progress-bar-inner {
-            width: var(--progress-width);
         }
 
         /* Ambient Glow Blobs Animation Tối Ưu GPU */
@@ -134,7 +97,7 @@
         ::-webkit-scrollbar-thumb { background: #00f0ff; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #ff007f; }
 
-        /* PPT SLIDE-IN ANIMATIONS */
+        /* SLIDE-IN ANIMATIONS */
         .morph-header {
             opacity: 0;
             transform: translateY(-30px);
@@ -143,24 +106,7 @@
         }
 
         @keyframes morphSlideDown {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .morph-nav {
-            opacity: 0;
-            transform: translateY(-10px);
-            animation: morphNavFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.2s;
-        }
-
-        @keyframes morphNavFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .morph-element {
@@ -171,25 +117,36 @@
         }
 
         @keyframes morphSlideUp {
-            to {
-                opacity: 1;
-                transform: translate3d(0, 0, 0) scale(1);
-            }
+            to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
         }
 
         .delay-1 { animation-delay: 0.15s; }
         .delay-2 { animation-delay: 0.3s; }
         .delay-3 { animation-delay: 0.45s; }
         .delay-4 { animation-delay: 0.6s; }
-        .delay-5 { animation-delay: 0.75s; }
+
+        /* Terminal Cursor Blink */
+        .cursor-blink {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background-color: #00f0ff;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body class="bg-[#020617] relative antialiased selection:bg-cyber-cyan selection:text-slate-950">
 
-    <!-- CANVAS NỀN -->
+    <!-- CANVAS NỀN HẠT LIGHTWEIGHT -->
     <canvas id="cyber-bg" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <!-- ÁNH SÁNG NỀN (GIẢM BÁN KÍNH BLUR ĐỂ NHẸ GPU MOBILE) -->
+    <!-- ÁNH SÁNG NỀN VÀ SCANLINE -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div class="absolute top-1/4 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-cyber-cyan/15 rounded-full blur-[50px] sm:blur-[100px] animate-blob"></div>
         <div class="absolute top-1/2 right-10 w-72 sm:w-96 h-72 sm:h-96 bg-cyber-pink/15 rounded-full blur-[50px] sm:blur-[100px] animate-blob animation-delay-2000"></div>
@@ -201,19 +158,20 @@
     <header class="morph-header fixed top-0 left-0 w-full z-50 px-6 py-4 transition-all duration-300 backdrop-blur-md bg-[#020617]/85 border-b border-slate-800/60">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             
-            <!-- LOGO -->
+            <!-- LOGO HIỆU ỨNG GLITCH MORPH -->
             <a href="#home" id="brand-logo" class="font-bebas text-3xl sm:text-4xl tracking-[0.15em] text-white flex items-center cursor-pointer select-none group min-w-[200px]">
                 <span id="logo-text" class="text-cyber-cyan text-glow-cyan transition-colors duration-300">PORTFOLIO.</span>
             </a>
 
-            <!-- MENU NAVBAR DESKTOP -->
-            <nav class="morph-nav hidden md:flex items-center relative p-1.5 rounded-full border border-slate-800/80 bg-slate-950/60" id="nav-container">
+            <!-- MENU DESKTOP -->
+            <nav class="hidden md:flex items-center relative p-1.5 rounded-full border border-slate-800/80 bg-slate-950/60" id="nav-container">
                 <div id="nav-indicator" class="absolute top-1.5 bottom-1.5 left-0 rounded-full bg-gradient-to-r from-cyber-cyan/20 to-cyber-pink/20 border border-cyber-cyan/50 shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all duration-300 ease-out pointer-events-none opacity-0"></div>
 
-                <a href="#home" class="nav-link relative z-10 px-5 py-1.5 text-xs font-mono tracking-widest uppercase transition-colors duration-200 text-cyber-cyan font-bold" data-section="home">Home</a>
-                <a href="#about" class="nav-link relative z-10 px-5 py-1.5 text-xs font-mono tracking-widest uppercase transition-colors duration-200 text-slate-400 hover:text-slate-200" data-section="about">About</a>
-                <a href="#projects" class="nav-link relative z-10 px-5 py-1.5 text-xs font-mono tracking-widest uppercase transition-colors duration-200 text-slate-400 hover:text-slate-200" data-section="projects">Projects</a>
-                <a href="#contact" class="nav-link relative z-10 px-5 py-1.5 text-xs font-mono tracking-widest uppercase transition-colors duration-200 text-slate-400 hover:text-slate-200" data-section="contact">Contact</a>
+                <a href="#home" class="nav-link relative z-10 px-5 py-1.5 text-xs font-code tracking-widest uppercase transition-colors duration-200 text-cyber-cyan font-bold" data-section="home">Home</a>
+                <a href="#about" class="nav-link relative z-10 px-5 py-1.5 text-xs font-code tracking-widest uppercase transition-colors duration-200 text-slate-400 hover:text-slate-200" data-section="about">About</a>
+                <a href="#lab" class="nav-link relative z-10 px-5 py-1.5 text-xs font-code tracking-widest uppercase transition-colors duration-200 text-slate-400 hover:text-slate-200" data-section="lab">My Lab</a>
+                <a href="#stack" class="nav-link relative z-10 px-5 py-1.5 text-xs font-code tracking-widest uppercase transition-colors duration-200 text-slate-400 hover:text-slate-200" data-section="stack">Tech Stack</a>
+                <a href="#contact" class="nav-link relative z-10 px-5 py-1.5 text-xs font-code tracking-widest uppercase transition-colors duration-200 text-slate-400 hover:text-slate-200" data-section="contact">Contact</a>
             </nav>
 
             <!-- NÚT MOBILE MENU -->
@@ -222,71 +180,75 @@
             </button>
         </div>
 
-        <!-- MENU NAVBAR MOBILE (XỔ XUỐNG) -->
-        <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto mt-4 pb-2 border-t border-slate-800/80 pt-4 flex flex-col gap-2 font-mono text-sm">
+        <!-- MENU MOBILE -->
+        <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto mt-4 pb-2 border-t border-slate-800/80 pt-4 flex flex-col gap-2 font-code text-sm">
             <a href="#home" class="mobile-nav-link text-cyber-cyan font-bold px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800" data-section="home">Home</a>
             <a href="#about" class="mobile-nav-link text-slate-300 hover:text-cyber-cyan px-4 py-2.5 rounded-xl hover:bg-slate-900/50" data-section="about">About</a>
-            <a href="#projects" class="mobile-nav-link text-slate-300 hover:text-cyber-cyan px-4 py-2.5 rounded-xl hover:bg-slate-900/50" data-section="projects">Projects</a>
+            <a href="#lab" class="mobile-nav-link text-slate-300 hover:text-cyber-cyan px-4 py-2.5 rounded-xl hover:bg-slate-900/50" data-section="lab">My Lab</a>
+            <a href="#stack" class="mobile-nav-link text-slate-300 hover:text-cyber-cyan px-4 py-2.5 rounded-xl hover:bg-slate-900/50" data-section="stack">Tech Stack</a>
             <a href="#contact" class="mobile-nav-link text-slate-300 hover:text-cyber-cyan px-4 py-2.5 rounded-xl hover:bg-slate-900/50" data-section="contact">Contact</a>
         </div>
     </header>
 
-    <!-- CONTENT -->
+    <!-- CONTENT WRAPPER -->
     <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
         
-        <!-- HOME / HERO -->
+        <!-- 1. HERO / INTRO SECTION -->
         <section id="home" class="min-h-[85vh] flex flex-col justify-center items-start pt-6">
             
-            <div class="morph-element delay-1 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyber-cyan/30 bg-cyber-cyan/10 text-cyber-cyan text-xs font-mono mb-6 neon-shadow-cyan">
+            <div class="morph-element delay-1 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyber-cyan/30 bg-cyber-cyan/10 text-cyber-cyan text-xs font-code mb-6 neon-shadow-cyan">
                 <span class="w-2 h-2 rounded-full bg-cyber-cyan animate-ping"></span>
-                print("Hello World!")
+                Welcome to my digital playground
             </div>
 
-            <h1 class="morph-element delay-2 font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-                <span class="text-slate-300 font-light text-xl sm:text-3xl block mb-2">Hello!! Tôi là</span>
-                <span class="font-bebas text-custom-pink text-glow-subtle text-6xl sm:text-8xl lg:text-9xl tracking-wider inline-block select-none">NGÔ DUY PHÚ</span>
+            <!-- TIÊU ĐỀ: NGÔ DUY PHÚ -->
+            <h1 class="morph-element delay-2 font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 leading-tight">
+                <span class="text-slate-400 font-light text-xl sm:text-2xl block mb-2 font-code">// Personal Portfolio</span>
+                <span class="font-bebas text-custom-pink text-glow-subtle text-6xl sm:text-8xl lg:text-9xl tracking-wider inline-block select-none">
+                    NGÔ DUY PHÚ
+                </span>
             </h1>
 
-            <p class="morph-element delay-3 max-w-2xl text-slate-300 text-base sm:text-xl font-light mb-8 leading-relaxed">
-                Tôi là 1 người sử dụng AI để code, có hứng thú với Full-stack Developer và Software Developer.
+            <!-- TAGLINE -->
+            <p class="morph-element delay-3 font-code text-lg sm:text-2xl text-cyber-cyan text-glow-cyan mb-8 italic">
+                "Create, fix, and make it work."
             </p>
 
-            <div class="morph-element delay-4 flex flex-wrap gap-3 mb-10 text-xs font-mono">
-                <span class="px-4 py-2 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-200 flex items-center gap-2 font-bold tracking-wide">
-                    <i class="fa-brands fa-python text-cyber-yellow"></i> Python
-                </span>
-                <span class="px-4 py-2 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-200 flex items-center gap-2 font-bold tracking-wide">
-                    <svg class="w-4 h-4 inline-block" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 0C12 6.62742 6.62742 12 0 12C6.62742 12 17.3726 12 24 12C17.3726 12 12 6.62742 12 0Z" fill="url(#gemini-gradient-1)"/>
-                        <defs>
-                            <linearGradient id="gemini-gradient-1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                                <stop offset="0%" stop-color="#4E82EE"/>
-                                <stop offset="50%" stop-color="#A855F7"/>
-                                <stop offset="100%" stop-color="#EC4899"/>
-                            </linearGradient>
-                        </defs>
-                    </svg> Gemini
-                </span>
-                <span class="px-4 py-2 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-200 flex items-center gap-2 font-bold tracking-wide">
-                    <i class="fa-solid fa-globe text-cyber-pink"></i> Website
-                </span>
+            <!-- QUICK INTRO (TERMINAL STYLE) -->
+            <div class="morph-element delay-4 w-full max-w-2xl bg-slate-950/90 border border-slate-800 rounded-xl p-4 sm:p-5 mb-10 shadow-2xl font-code text-xs sm:text-sm text-slate-300 relative overflow-hidden">
+                <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-800/80">
+                    <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                    <span class="text-[11px] text-slate-500 ml-2">bash - duyphungo@portfolio:~</span>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-slate-400"><span class="text-cyber-pink">$</span> cat interests.json</p>
+                    <p class="text-slate-200 pl-4">
+                        { <br>
+                        &nbsp;&nbsp;<span class="text-cyber-yellow">"focus"</span>: [<span class="text-cyber-cyan">"Python"</span>, <span class="text-cyber-cyan">"Website"</span>, <span class="text-cyber-cyan">"Software"</span>],<br>
+                        &nbsp;&nbsp;<span class="text-cyber-yellow">"status"</span>: <span class="text-emerald-400">"Building cool things & exploring AI..."</span><br>
+                        } <span class="cursor-blink"></span>
+                    </p>
+                </div>
             </div>
 
-            <div class="morph-element delay-5 flex flex-wrap gap-4 sm:gap-6">
-                <a href="#projects" class="btn-scroll px-8 py-4 rounded-xl bg-cyber-cyan text-slate-950 font-extrabold font-display tracking-wider hover:bg-white hover:shadow-[0_0_30px_#00f0ff] transition-all duration-300">
-                    XEM DỰ ÁN <i class="fa-solid fa-arrow-right-long ml-2"></i>
+            <!-- BUTTONS -->
+            <div class="morph-element delay-4 flex flex-wrap gap-4">
+                <a href="#lab" class="px-8 py-4 rounded-xl bg-cyber-cyan text-slate-950 font-extrabold font-display tracking-wider hover:bg-white hover:shadow-[0_0_30px_#00f0ff] transition-all duration-300">
+                    KHÁM PHÁ DỰ ÁN <i class="fa-solid fa-flask ml-2"></i>
                 </a>
-                <a href="#contact" class="btn-scroll px-8 py-4 rounded-xl cyber-card text-white font-bold font-display tracking-wider border-slate-700 hover:border-cyber-pink hover:text-cyber-pink transition-all duration-300">
-                    LIÊN HỆ NGAY
+                <a href="#contact" class="px-8 py-4 rounded-xl cyber-card text-white font-bold font-display tracking-wider border-slate-700 hover:border-cyber-pink hover:text-cyber-pink transition-all duration-300">
+                    KẾT NỐI NGAY
                 </a>
             </div>
         </section>
 
-        <!-- ABOUT ME SECTION -->
-        <section id="about" class="py-24">
+        <!-- 2. ABOUT ME SECTION -->
+        <section id="about" class="py-20">
             <div class="morph-element delay-1 text-center mb-16 relative">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyber-cyan/40 bg-cyber-cyan/10 text-cyber-cyan text-xs font-mono mb-3 tracking-widest uppercase neon-shadow-cyan">
-                    <i class="fa-solid fa-user-astronaut"></i> Personal Profile
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyber-cyan/40 bg-cyber-cyan/10 text-cyber-cyan text-xs font-code mb-3 tracking-widest uppercase neon-shadow-cyan">
+                    <i class="fa-solid fa-user-astronaut"></i> Personal Angle
                 </div>
                 <h2 class="font-bebas text-5xl sm:text-6xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-white to-cyber-pink text-glow-cyan">
                     ABOUT ME
@@ -298,120 +260,61 @@
                 </div>
             </div>
 
-            <!-- KHUNG CHỨA 3 MỤC SÁT NHAU -->
-            <div class="morph-element delay-2 about-container flex flex-col lg:flex-row rounded-2xl overflow-hidden border border-slate-800 bg-slate-950/80 backdrop-blur-xl shadow-2xl min-h-[220px] w-full">
+            <!-- 3 THẺ NỔI BẬT MANG MÀU SẮC CÁ NHÂN -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <!-- 1. CODE -->
-                <div class="about-card p-6 sm:p-8 relative overflow-hidden group border-b lg:border-b-0 lg:border-r border-slate-800/80 hover:bg-slate-900/70 cursor-pointer flex flex-col justify-start">
-                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-cyber-cyan/10 rounded-full blur-2xl group-hover:bg-cyber-cyan/20 transition-all"></div>
-                    
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-900 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-2xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all shrink-0">
-                            <i class="fa-solid fa-code"></i>
-                        </div>
-                        <h3 class="font-display text-2xl font-bold text-white group-hover:text-cyber-cyan transition-colors whitespace-nowrap">
-                            Code
-                        </h3>
+                <!-- THẺ 1: Tech & AI Enthusiast -->
+                <div class="morph-element delay-2 cyber-card p-6 sm:p-8 rounded-2xl relative overflow-hidden group hover:border-cyber-cyan transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-slate-900 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-2xl mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all">
+                        <i class="fa-solid fa-microchip"></i>
                     </div>
-
-                    <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-80 transition-all duration-500 ease-in-out overflow-hidden mt-0 group-hover:mt-6">
-                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 italic text-slate-400">
-                            "Tuy thường dùng AI để code, nhưng sau đây là những ngôn ngữ mình có thể hiểu:"
-                        </p>
-                        <div class="space-y-3 border-t border-slate-800/80 pt-3">
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <i class="fa-brands fa-python text-cyber-yellow text-sm"></i>
-                                    <span class="text-xs font-mono text-slate-200 font-semibold">Python</span>
-                                </div>
-                                <div class="w-full bg-slate-800/80 rounded-full h-1.5 overflow-hidden">
-                                    <div class="progress-bar-inner h-full bg-gradient-to-r from-cyber-yellow to-amber-500 rounded-full shadow-[0_0_8px_rgba(250,204,21,0.5)]" style="--progress-width: 80%;"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <i class="fa-solid fa-code text-purple-400 text-sm"></i>
-                                    <span class="text-xs font-mono text-slate-200 font-semibold">C#</span>
-                                </div>
-                                <div class="w-full bg-slate-800/80 rounded-full h-1.5 overflow-hidden">
-                                    <div class="progress-bar-inner h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.5)]" style="--progress-width: 48%;"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <i class="fa-brands fa-js text-yellow-400 text-sm"></i>
-                                    <span class="text-xs font-mono text-slate-200 font-semibold">Javascript</span>
-                                </div>
-                                <div class="w-full bg-slate-800/80 rounded-full h-1.5 overflow-hidden">
-                                    <div class="progress-bar-inner h-full bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full shadow-[0_0_8px_rgba(250,204,21,0.5)]" style="--progress-width: 58%;"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <i class="fa-solid fa-robot text-cyber-cyan text-sm"></i>
-                                    <span class="text-xs font-mono text-slate-200 font-semibold">AI</span>
-                                </div>
-                                <div class="w-full bg-slate-800/80 rounded-full h-1.5 overflow-hidden">
-                                    <div class="progress-bar-inner h-full bg-gradient-to-r from-cyber-cyan to-blue-500 rounded-full shadow-[0_0_8px_rgba(0,240,255,0.5)]" style="--progress-width: 87%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-white group-hover:text-cyber-cyan transition-colors">
+                        Tech & AI Enthusiast
+                    </h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Tự học lập trình, thích tìm hiểu cách dùng AI làm trợ thủ đắc lực để biến các ý tưởng ngẫu hứng thành sản phẩm thực sự chạy được.
+                    </p>
                 </div>
 
-                <!-- 2. HOBBY -->
-                <div class="about-card p-6 sm:p-8 relative overflow-hidden group border-b lg:border-b-0 lg:border-r border-slate-800/80 hover:bg-slate-900/70 cursor-pointer flex flex-col justify-start">
-                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-cyber-pink/10 rounded-full blur-2xl group-hover:bg-cyber-pink/20 transition-all"></div>
-                    
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-900 border border-cyber-pink/30 flex items-center justify-center text-cyber-pink text-2xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,0,127,0.4)] transition-all shrink-0">
-                            <i class="fa-solid fa-icons"></i>
-                        </div>
-                        <h3 class="font-display text-2xl font-bold text-white group-hover:text-cyber-pink transition-colors whitespace-nowrap">
-                            Hobby
-                        </h3>
+                <!-- THẺ 2: Creative Mind -->
+                <div class="morph-element delay-3 cyber-card p-6 sm:p-8 rounded-2xl relative overflow-hidden group hover:border-cyber-pink transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-slate-900 border border-cyber-pink/40 flex items-center justify-center text-cyber-pink text-2xl mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,0,127,0.4)] transition-all">
+                        <i class="fa-solid fa-compact-disc"></i>
                     </div>
-
-                    <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-80 transition-all duration-500 ease-in-out overflow-hidden mt-0 group-hover:mt-6">
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Mình có hứng thú với lập trình từ bé, có tìm hiểu về code và nghịch 1 số game kéo-thả.
-                        </p>
-                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-white group-hover:text-cyber-pink transition-colors">
+                        Creative Mind
+                    </h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Ngoài code còn thích âm nhạc (Piano/Violin, R&B, Neo-classical), game platform và tự do thiết kế giao diện theo phong cách riêng.
+                    </p>
                 </div>
 
-                <!-- 3. ABILITIES -->
-                <div class="about-card p-6 sm:p-8 relative overflow-hidden group hover:bg-slate-900/70 cursor-pointer flex flex-col justify-start">
-                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-cyber-yellow/10 rounded-full blur-2xl group-hover:bg-cyber-yellow/20 transition-all"></div>
-                    
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-900 border border-cyber-yellow/30 flex items-center justify-center text-cyber-yellow text-2xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.4)] transition-all shrink-0">
-                            <i class="fa-solid fa-brain"></i>
-                        </div>
-                        <h3 class="font-display text-2xl font-bold text-white group-hover:text-cyber-yellow transition-colors whitespace-nowrap">
-                            Abilities
-                        </h3>
+                <!-- THẺ 3: My Playground -->
+                <div class="morph-element delay-4 cyber-card p-6 sm:p-8 rounded-2xl relative overflow-hidden group hover:border-cyber-yellow transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-slate-900 border border-cyber-yellow/40 flex items-center justify-center text-cyber-yellow text-2xl mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.4)] transition-all">
+                        <i class="fa-solid fa-gamepad"></i>
                     </div>
-
-                    <div class="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-80 transition-all duration-500 ease-in-out overflow-hidden mt-0 group-hover:mt-6">
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Mình nghĩ mình có khả năng tư duy ở mức khá tốt :)) nhưng khả năng tận dụng vẫn chưa tốt lắm. Mình sẽ cố phát triển kĩ năng này hơn^^
-                        </p>
-                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-white group-hover:text-cyber-yellow transition-colors">
+                        My Playground
+                    </h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Thích thử nghiệm từ web app nhẹ nhàng, bot Discord, game nho nhỏ cho đến các ứng dụng nhận diện hình ảnh/AR linh hoạt.
+                    </p>
                 </div>
 
             </div>
         </section>
 
-        <!-- PROJECTS -->
-        <section id="projects" class="py-20">
+        <!-- 3. MY LAB / SHOWCASE SECTION -->
+        <section id="lab" class="py-20">
             <div class="morph-element delay-1 text-center mb-16 relative">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyber-pink/40 bg-cyber-pink/10 text-cyber-pink text-xs font-mono mb-3 tracking-widest uppercase neon-shadow-pink">
-                    <i class="fa-solid fa-code-fork"></i> Innovation Showcase
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyber-pink/40 bg-cyber-pink/10 text-cyber-pink text-xs font-code mb-3 tracking-widest uppercase neon-shadow-pink">
+                    <i class="fa-solid fa-flask"></i> Experiments & Projects
                 </div>
                 <h2 class="font-bebas text-5xl sm:text-6xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyber-pink via-white to-cyber-cyan text-glow-pink">
-                    FEATURED PROJECTS
+                    MY LAB / SHOWCASE
                 </h2>
-                <p class="text-slate-400 text-xs sm:text-sm font-mono mt-2 tracking-widest uppercase">// DỰ ÁN NỔI BẬT & BỘ SƯU TẬP THỬ NGHIỆM</p>
+                <p class="text-slate-400 text-xs sm:text-sm font-code mt-2 tracking-widest uppercase">// BỘ SƯU TẬP DỰ ÁN THỬ NGHIỆM & SẢN PHẨM</p>
                 <div class="flex items-center justify-center gap-3 mt-4">
                     <div class="w-12 h-[2px] bg-gradient-to-r from-transparent to-cyber-pink"></div>
                     <div class="w-2 h-2 rounded-full bg-cyber-pink animate-ping"></div>
@@ -420,113 +323,245 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- PROJECT 1: SBDM -->
-                <div class="morph-element delay-2 cyber-card rounded-2xl overflow-hidden group hover:border-cyber-cyan/50 transition-all duration-300">
-                    <div class="h-52 bg-slate-900 relative overflow-hidden flex items-center justify-center border-b border-slate-800">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-                        <i class="fa-solid fa-dice text-7xl text-cyber-cyan/40 group-hover:scale-110 group-hover:text-cyber-cyan transition-all duration-300"></i>
-                        <span class="absolute top-4 right-4 z-20 text-[10px] font-mono px-2.5 py-1 rounded bg-cyber-cyan/20 border border-cyber-cyan/40 text-cyber-cyan uppercase tracking-wider">
-                            Static Web
-                        </span>
-                    </div>
-                    <div class="p-8">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-mono text-cyber-cyan">// FUN SIDE-PROJECT</span>
-                        </div>
-                        <h3 class="font-display text-2xl font-bold mb-3 text-white group-hover:text-cyber-cyan transition-colors">Dự án SBDM</h3>
-                        <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                            Một trang web tĩnh mình làm ngẫu hứng lúc rảnh rỗi để giải trí và trải nghiệm giao diện web.
-                        </p>
-                        <div class="p-3 rounded-xl bg-slate-900/90 border border-amber-500/30 text-amber-300/90 text-xs font-mono mb-6 flex items-start gap-2.5">
-                            <i class="fa-solid fa-triangle-exclamation text-amber-400 mt-0.5 shrink-0"></i>
-                            <span>Lưu ý: Chỉ là dự án thử nghiệm vui vẻ, hoàn toàn không khuyến khích hay cổ xúy cờ bạc và các tệ nạn xã hội nhé! =)))</span>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-slate-800/80 pt-4">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs font-mono px-3 py-1 rounded bg-slate-800/80 text-slate-300">HTML/CSS</span>
-                                <span class="text-xs font-mono px-3 py-1 rounded bg-slate-800/80 text-slate-300">Vercel</span>
-                            </div>
-                            <a href="https://songbacdinhmenh.vercel.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-mono font-bold text-cyber-cyan hover:text-white transition-colors">
-                                TRUY CẬP <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PROJECT 2: V-menu -->
-                <div class="morph-element delay-3 cyber-card rounded-2xl overflow-hidden group hover:border-cyber-pink/50 transition-all duration-300">
-                    <div class="h-52 bg-slate-900 relative overflow-hidden flex items-center justify-center border-b border-slate-800">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-                        <i class="fa-solid fa-utensils text-7xl text-cyber-pink/40 group-hover:scale-110 group-hover:text-cyber-pink transition-all duration-300"></i>
-                        <span class="absolute top-4 right-4 z-20 text-[10px] font-mono px-2.5 py-1 rounded bg-cyber-pink/20 border border-cyber-pink/40 text-cyber-pink uppercase tracking-wider animate-pulse">
+                
+                <!-- LAB ITEM 1: V-Menu System -->
+                <div class="morph-element delay-2 cyber-card rounded-2xl overflow-hidden group hover:border-cyber-pink/60 transition-all duration-300">
+                    <div class="h-48 bg-slate-900/90 relative overflow-hidden flex items-center justify-center border-b border-slate-800">
+                        <i class="fa-solid fa-utensils text-7xl text-cyber-pink/30 group-hover:scale-110 group-hover:text-cyber-pink transition-all duration-300"></i>
+                        <span class="absolute top-4 right-4 text-[10px] font-code px-3 py-1 rounded-full bg-cyber-pink/20 border border-cyber-pink/50 text-cyber-pink uppercase font-bold tracking-wider animate-pulse">
                             In Progress
                         </span>
                     </div>
-                    <div class="p-8">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-mono text-cyber-pink">// HYBRID APPLICATION</span>
-                        </div>
-                        <h3 class="font-display text-2xl font-bold mb-3 text-white group-hover:text-cyber-pink transition-colors">V-menu System</h3>
-                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
-                            Giải pháp kết hợp mượt mà giữa ứng dụng phần mềm và nền tảng Web nhằm tối ưu hóa quy trình hỗ trợ order món ăn, quản lý thực đơn thông minh cho nhà hàng/quán ăn.
+                    <div class="p-6 sm:p-8">
+                        <span class="text-xs font-code text-cyber-pink block mb-1">// HYBRID SYSTEM</span>
+                        <h3 class="font-display text-2xl font-bold mb-3 text-white group-hover:text-cyber-pink transition-colors">V-Menu System</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Hệ thống hỗ trợ order & quản lý thực đơn kết hợp mượt mà giữa ứng dụng phần mềm và giao diện Web.
                         </p>
-                        <div class="flex items-center justify-between border-t border-slate-800/80 pt-4">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs font-mono px-3 py-1 rounded bg-slate-800/80 text-slate-300">Software</span>
-                                <span class="text-xs font-mono px-3 py-1 rounded bg-slate-800/80 text-slate-300">Web App</span>
-                                <span class="text-xs font-mono px-3 py-1 rounded bg-slate-800/80 text-slate-300">Ordering</span>
-                            </div>
-                            <span class="text-xs font-mono font-bold text-slate-500 flex items-center gap-1">
-                                <i class="fa-solid fa-spinner animate-spin"></i> ĐANG PHÁT TRIỂN
-                            </span>
+                        <div class="flex items-center gap-2 font-code text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Software</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Web App</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- LAB ITEM 2: AR Hand-Tracking -->
+                <div class="morph-element delay-3 cyber-card rounded-2xl overflow-hidden group hover:border-cyber-cyan/60 transition-all duration-300">
+                    <div class="h-48 bg-slate-900/90 relative overflow-hidden flex items-center justify-center border-b border-slate-800">
+                        <i class="fa-solid fa-hand-pointer text-7xl text-cyber-cyan/30 group-hover:scale-110 group-hover:text-cyber-cyan transition-all duration-300"></i>
+                        <span class="absolute top-4 right-4 text-[10px] font-code px-3 py-1 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/50 text-cyber-cyan uppercase font-bold tracking-wider">
+                            Computer Vision
+                        </span>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <span class="text-xs font-code text-cyber-cyan block mb-1">// AI & AR EXPERIMENT</span>
+                        <h3 class="font-display text-2xl font-bold mb-3 text-white group-hover:text-cyber-cyan transition-colors">AR Hand-Tracking</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Chương trình nhận diện cử chỉ ngón tay qua camera bằng Python & MediaPipe, hỗ trợ tương tác thực tế ảo linh hoạt.
+                        </p>
+                        <div class="flex items-center gap-2 font-code text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Python</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">MediaPipe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAB ITEM 3: Screen OCR Widget -->
+                <div class="morph-element delay-2 cyber-card rounded-2xl overflow-hidden group hover:border-cyber-yellow/60 transition-all duration-300">
+                    <div class="h-48 bg-slate-900/90 relative overflow-hidden flex items-center justify-center border-b border-slate-800">
+                        <i class="fa-solid fa-crop-simple text-7xl text-cyber-yellow/30 group-hover:scale-110 group-hover:text-cyber-yellow transition-all duration-300"></i>
+                        <span class="absolute top-4 right-4 text-[10px] font-code px-3 py-1 rounded-full bg-cyber-yellow/20 border border-cyber-yellow/50 text-cyber-yellow uppercase font-bold tracking-wider">
+                            Desktop Utility
+                        </span>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <span class="text-xs font-code text-cyber-yellow block mb-1">// UTILITY WIDGET</span>
+                        <h3 class="font-display text-2xl font-bold mb-3 text-white group-hover:text-cyber-yellow transition-colors">Screen OCR Widget</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Utility tiện ích nổi trên màn hình giúp khoanh vùng quét chữ và tra nghĩa/phiên âm tức thì tiện lợi.
+                        </p>
+                        <div class="flex items-center gap-2 font-code text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Python</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">OCR Engine</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAB ITEM 4: Gemini AI Discord Bot -->
+                <div class="morph-element delay-3 cyber-card rounded-2xl overflow-hidden group hover:border-purple-500/60 transition-all duration-300">
+                    <div class="h-48 bg-slate-900/90 relative overflow-hidden flex items-center justify-center border-b border-slate-800">
+                        <i class="fa-brands fa-discord text-7xl text-purple-400/30 group-hover:scale-110 group-hover:text-purple-400 transition-all duration-300"></i>
+                        <span class="absolute top-4 right-4 text-[10px] font-code px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/50 text-purple-300 uppercase font-bold tracking-wider">
+                            Cloud Bot
+                        </span>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <span class="text-xs font-code text-purple-400 block mb-1">// AI BOT INTEGRATION</span>
+                        <h3 class="font-display text-2xl font-bold mb-3 text-white group-hover:text-purple-400 transition-colors">Gemini AI Discord Bot</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Bot thông minh giải đáp tự động tích hợp API Gemini triển khai trên nền tảng Cloud.
+                        </p>
+                        <div class="flex items-center gap-2 font-code text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Gemini API</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Cloud Run</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- FOOTER / CONTACT -->
-        <footer id="contact" class="morph-element delay-4 pt-12 pb-8 border-t border-slate-800/80 mt-12 text-center sm:text-left">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                    <h3 class="font-display text-2xl font-bold text-white mb-2">CÙNG TẠO NÊN ĐIỀU BẤT NGỜ!</h3>
-                    <p class="text-slate-400 text-sm mb-4">Kết nối với Ngô Duy Phú qua các kênh bên dưới =)))</p>
-                    
-                    <!-- Thông tin liên hệ -->
-                    <div class="space-y-2 text-xs font-mono">
-                        <div class="flex items-center justify-center sm:justify-start gap-2 text-slate-300">
-                            <i class="fa-regular fa-envelope text-cyber-cyan w-5 text-center"></i>
-                            <span class="text-slate-500">Meo meo:</span>
-                            <a href="mailto:duyphungo1080@gmail.com" class="text-cyber-cyan hover:underline">duyphungo1080@gmail.com</a>
-                        </div>
-                        <div class="flex items-center justify-center sm:justify-start gap-2 text-slate-300">
-                            <i class="fa-solid fa-phone text-cyber-pink w-5 text-center"></i>
-                            <span class="text-slate-500">Zép lào:</span>
-                            <span class="text-slate-200">0775 *** ***</span>
-                        </div>
-                        <div class="flex items-center justify-center sm:justify-start gap-2 text-slate-300">
-                            <i class="fa-brands fa-facebook text-blue-400 w-5 text-center"></i>
-                            <span class="text-slate-500">Fở bò:</span>
-                            <span class="text-slate-200">DuyPhu Ngo</span>
-                        </div>
+        <!-- 4. MY TECH STACK SECTION -->
+        <section id="stack" class="py-20">
+            <div class="morph-element delay-1 text-center mb-16 relative">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyber-cyan/40 bg-cyber-cyan/10 text-cyber-cyan text-xs font-code mb-3 tracking-widest uppercase neon-shadow-cyan">
+                    <i class="fa-solid fa-layer-group"></i> Arsenal
+                </div>
+                <h2 class="font-bebas text-5xl sm:text-6xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-white to-cyber-pink text-glow-cyan">
+                    MY TECH STACK
+                </h2>
+                <p class="text-slate-400 text-xs sm:text-sm font-code mt-2 tracking-widest uppercase">// ĐỒ NGHỀ & CÔNG CỤ THƯỜNG SỬ DỤNG</p>
+                <div class="flex items-center justify-center gap-3 mt-4">
+                    <div class="w-12 h-[2px] bg-gradient-to-r from-transparent to-cyber-cyan"></div>
+                    <div class="w-2 h-2 rounded-full bg-cyber-cyan animate-ping"></div>
+                    <div class="w-12 h-[2px] bg-gradient-to-l from-transparent to-cyber-pink"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- NHÓM 1: NGÔN NGỮ -->
+                <div class="morph-element delay-2 cyber-card p-6 sm:p-8 rounded-2xl">
+                    <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-code text-cyber-cyan"></i> Ngôn ngữ
+                    </h3>
+                    <div class="flex flex-wrap gap-3 font-code text-xs">
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 flex items-center gap-2 font-semibold hover:border-cyber-yellow transition-colors">
+                            <i class="fa-brands fa-python text-cyber-yellow"></i> Python
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 flex items-center gap-2 font-semibold hover:border-yellow-400 transition-colors">
+                            <i class="fa-brands fa-js text-yellow-400"></i> JavaScript
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 flex items-center gap-2 font-semibold hover:border-purple-400 transition-colors">
+                            <i class="fa-solid fa-code text-purple-400"></i> C#
+                        </span>
                     </div>
                 </div>
 
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full cyber-card flex items-center justify-center text-slate-300 hover:text-cyber-cyan hover:border-cyber-cyan transition-all"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full cyber-card flex items-center justify-center text-slate-300 hover:text-cyber-pink hover:border-cyber-pink transition-all"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="mailto:duyphungo1080@gmail.com" class="w-10 h-10 rounded-full cyber-card flex items-center justify-center text-slate-300 hover:text-cyber-yellow hover:border-cyber-yellow transition-all"><i class="fa-regular fa-envelope"></i></a>
+                <!-- NHÓM 2: THƯ VIỆN & GUI -->
+                <div class="morph-element delay-3 cyber-card p-6 sm:p-8 rounded-2xl">
+                    <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-window-restore text-cyber-pink"></i> Thư viện & GUI
+                    </h3>
+                    <div class="flex flex-wrap gap-3 font-code text-xs">
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 font-semibold hover:border-cyber-cyan transition-colors">Tkinter</span>
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 font-semibold hover:border-cyber-pink transition-colors">Kivy</span>
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 font-semibold hover:border-emerald-400 transition-colors">Pygame</span>
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 font-semibold hover:border-cyber-cyan transition-colors">MediaPipe</span>
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 flex items-center gap-2 font-semibold hover:border-sky-400 transition-colors">
+                            <i class="fa-brands fa-css3-alt text-sky-400"></i> Tailwind CSS
+                        </span>
+                    </div>
                 </div>
+
+                <!-- NHÓM 3: AI & CLOUD -->
+                <div class="morph-element delay-2 cyber-card p-6 sm:p-8 rounded-2xl">
+                    <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-cloud text-cyber-purple"></i> AI & Cloud
+                    </h3>
+                    <div class="flex flex-wrap gap-3 font-code text-xs">
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 flex items-center gap-2 font-semibold hover:border-pink-500 transition-colors">
+                            <svg class="w-4 h-4 inline-block" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0C12 6.62742 6.62742 12 0 12C6.62742 12 17.3726 12 24 12C17.3726 12 12 6.62742 12 0Z" fill="url(#gemini-gradient)"/>
+                                <defs>
+                                    <linearGradient id="gemini-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#4E82EE"/>
+                                        <stop offset="50%" stop-color="#A855F7"/>
+                                        <stop offset="100%" stop-color="#EC4899"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg> Gemini API
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 flex items-center gap-2 font-semibold hover:border-blue-400 transition-colors">
+                            <i class="fa-brands fa-google text-blue-400"></i> Google Cloud Run
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 font-semibold hover:border-white transition-colors">Vercel</span>
+                    </div>
+                </div>
+
+                <!-- NHÓM 4: MÔI TRƯỜNG -->
+                <div class="morph-element delay-3 cyber-card p-6 sm:p-8 rounded-2xl">
+                    <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-terminal text-cyber-yellow"></i> Môi trường & Tools
+                    </h3>
+                    <div class="flex flex-wrap gap-3 font-code text-xs">
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 flex items-center gap-2 font-semibold hover:border-blue-500 transition-colors">
+                            <i class="fa-solid fa-code text-blue-500"></i> VS Code
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 font-semibold hover:border-emerald-500 transition-colors">Pydroid 3</span>
+                        <span class="px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 flex items-center gap-2 font-semibold hover:border-orange-500 transition-colors">
+                            <i class="fa-brands fa-git-alt text-orange-500"></i> Git
+                        </span>
+                    </div>
+                </div>
+
             </div>
-            
-            <div class="mt-12 text-center text-xs font-mono text-slate-500">
-                &copy; 2026 NGO DUY PHU. ALL RIGHTS RESERVED.
+        </section>
+
+        <!-- 5. FOOTER / SAY HELLO SECTION -->
+        <footer id="contact" class="morph-element delay-4 pt-16 pb-12 border-t border-slate-800/80 mt-12">
+            <div class="cyber-card p-8 sm:p-12 rounded-3xl relative overflow-hidden text-center sm:text-left">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-cyber-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+                    <div class="max-w-xl">
+                        <span class="text-xs font-code text-cyber-cyan tracking-widest uppercase block mb-2">// SAY HELLO</span>
+                        <h3 class="font-display text-3xl sm:text-4xl font-extrabold text-white mb-4">
+                            SẴN SÀNG KẾT NỐI VÀ TRAO ĐỔI Ý TƯỞNG?
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Nếu bạn có cùng sở thích về công nghệ, AI, âm nhạc hoặc đơn giản muốn trao đổi về các ý tưởng dự án mới, hãy liên hệ với mình qua các kênh bên dưới.
+                        </p>
+                        
+                        <!-- LƯỚI THÔNG TIN LIÊN HỆ CHUYÊN NGHIỆP -->
+                        <div class="space-y-3 font-code text-xs">
+                            <div class="flex items-center justify-center sm:justify-start gap-3 text-slate-300">
+                                <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-cyber-cyan">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <span class="text-slate-500">Email:</span>
+                                <a href="mailto:duyphungo1080@gmail.com" class="text-cyber-cyan hover:underline font-semibold">duyphungo1080@gmail.com</a>
+                            </div>
+                            <div class="flex items-center justify-center sm:justify-start gap-3 text-slate-300">
+                                <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-cyber-pink">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </div>
+                                <span class="text-slate-500">Facebook:</span>
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="text-slate-200 hover:text-cyber-pink transition-colors font-semibold">DuyPhu Ngo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SOCIAL ICONS LARGE -->
+                    <div class="flex sm:flex-col gap-4 shrink-0">
+                        <a href="mailto:duyphungo1080@gmail.com" class="px-6 py-3.5 rounded-xl bg-cyber-cyan text-slate-950 font-bold font-code text-xs flex items-center justify-center gap-2 hover:bg-white transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)]">
+                            <i class="fa-regular fa-paper-plane"></i> GỬI EMAIL
+                        </a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl border border-slate-700 bg-slate-900/80 text-white font-bold font-code text-xs flex items-center justify-center gap-2 hover:border-cyber-pink hover:text-cyber-pink transition-all">
+                            <i class="fa-brands fa-github text-sm"></i> GITHUB PROFILE
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-6 border-t border-slate-800/80 text-center font-code text-xs text-slate-500">
+                    &copy; 2026 NGÔ DUY PHÚ. DESIGNED WITH CYBERPUNK VIBES.
+                </div>
             </div>
         </footer>
 
     </div>
 
-    <!-- SCRIPT CANVAS NỀN TỐI ƯU HIỆU NĂNG HIGH-PERFORMANCE -->
+    <!-- CANVAS BACKGROUND SCRIPT -->
     <script>
         const canvas = document.getElementById('cyber-bg');
         const ctx = canvas.getContext('2d');
@@ -534,10 +569,9 @@
         let width, height;
         let particles = [];
         
-        // Thích ứng số hạt theo màn hình (Mobile ít hạt hơn để siêu mượt)
         const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 32 : 65;
-        const maxDistance = isMobile ? 95 : 125;
+        const particleCount = isMobile ? 30 : 60;
+        const maxDistance = isMobile ? 95 : 120;
 
         function resize() {
             width = canvas.width = window.innerWidth;
@@ -590,14 +624,13 @@
                     const dx = p1.x - p2.x;
                     const dy = p1.y - p2.y;
 
-                    // Lọc nhanh bằng dx, dy trước khi tính căn bậc 2 (tiết kiệm CPU)
                     if (Math.abs(dx) < maxDistance && Math.abs(dy) < maxDistance) {
                         const dist = Math.sqrt(dx * dx + dy * dy);
                         if (dist < maxDistance) {
                             ctx.beginPath();
                             ctx.moveTo(p1.x, p1.y);
                             ctx.lineTo(p2.x, p2.y);
-                            ctx.strokeStyle = `rgba(0, 240, 255, ${1 - dist / maxDistance * 0.7})`;
+                            ctx.strokeStyle = `rgba(0, 240, 255, ${1 - dist / maxDistance * 0.6})`;
                             ctx.lineWidth = 0.5;
                             ctx.stroke();
                         }
@@ -611,7 +644,7 @@
         animate();
     </script>
 
-    <!-- SCRIPT HIỆU ỨNG MORPH CHỮ LOGO -->
+    <!-- SCRIPT GLITCH MORPH LOGO TEXT -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&$@";
@@ -660,14 +693,13 @@
         });
     </script>
 
-    <!-- SCRIPT MENU NAVBAR & MOBILE TOGGLE -->
+    <!-- SCRIPT NAVBAR INDICATOR & SCROLL SPY -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navContainer = document.getElementById('nav-container');
             const indicator = document.getElementById('nav-indicator');
             const sections = document.querySelectorAll('section, footer');
 
-            // Xử lý Toggle Menu Mobile
             const mobileBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('.mobile-nav-link');
@@ -701,7 +733,6 @@
             function setActive(link) {
                 const sectionId = link.getAttribute('data-section');
                 
-                // Highlight Desktop Nav
                 const navItem = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
                 if (navItem) {
                     document.querySelectorAll('.nav-link').forEach(l => {
@@ -714,7 +745,6 @@
                     updateIndicator(navItem);
                 }
 
-                // Highlight Mobile Nav
                 document.querySelectorAll('.mobile-nav-link').forEach(ml => {
                     if (ml.getAttribute('data-section') === sectionId) {
                         ml.classList.add('text-cyber-cyan', 'font-bold', 'bg-slate-900/80', 'border', 'border-slate-800');
@@ -726,7 +756,6 @@
                 });
             }
 
-            // Scroll Spy tối ưu với IntersectionObserver
             let scrollTimeout;
             window.addEventListener('scroll', () => {
                 if (scrollTimeout) return;
